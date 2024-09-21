@@ -1,5 +1,7 @@
 # Prerequisites
 *.d
+*.js
+*.json
 
 # Object files
 *.o
