@@ -1,8 +1,6 @@
 #include <stdio.h>
 
-int main(void) {
-
-//Pedido de Login
+void telaLogin(void){
     printf("=========================================\n");
     printf("|               BEM VINDO!              |\n");
     printf("=========================================\n");
@@ -12,11 +10,11 @@ int main(void) {
     printf("#### 1 - Login                          |\n");
     printf("#### 2 - Não Possuo Cadastro            |\n");
     printf("----------------------------------------|\n");
-    printf("#### Selecione uma das opcoes: ");
+    printf("#### Selecione uma das opcoes: \n");
+}
 
-
-//Caso o login tenha permissão de admin
-    printf("=========================================\n");
+void menuAdmin(void){
+    printf("\n=========================================\n");
     printf("|           BURGUER RESTAURANT          |\n");
     printf("=========================================\n");
     printf("|---------------------------------------|\n");
@@ -28,10 +26,11 @@ int main(void) {
     printf("#### 4 - Relatório                      |\n");
     printf("#### 0 - Sair                           |\n");
     printf("----------------------------------------|\n");
-    printf("#### Selecione uma das opcoes: ");
+    printf("#### Selecione uma das opcoes: \n");
+}
 
-// Tela De Gerenciamento de Produtos
-    printf("========================================|\n");
+void telaGerenciaProduto(void){
+    printf("\n========================================|\n");
     printf("|           BURGUER RESTAURANT          |\n");
     printf("=========================================\n");
     printf("|---------------------------------------|\n");
@@ -41,10 +40,11 @@ int main(void) {
     printf("#### 2 - Gerenciamento de Bebidas       |\n");
     printf("#### 0 - Sair                           |\n");
     printf("----------------------------------------|\n");
-    printf("#### Selecione uma das opcoes: ");
+    printf("#### Selecione uma das opcoes: \n");
+}
 
-// Tela De Gerenciamento de Hambugueres
-    printf("========================================|\n");
+void telaGerenciaHamburguer(void){
+    printf("\n========================================|\n");
     printf("|           BURGUER RESTAURANT          |\n");
     printf("=========================================\n");
     printf("|---------------------------------------|\n");
@@ -56,10 +56,11 @@ int main(void) {
     printf("#### 4 - Excluir Hambuguer              |\n");
     printf("#### 0 - Sair                           |\n");
     printf("----------------------------------------|\n");
-    printf("#### Selecione uma das opcoes: ");
+    printf("#### Selecione uma das opcoes: \n");
+}
 
-// Tela de Gerenciamento Bebidas
-    printf("========================================|\n");
+void telaGerenciaBebida(void){
+    printf("\n========================================|\n");
     printf("|           BURGUER RESTAURANT          |\n");
     printf("========================================|\n");
     printf("|---------------------------------------|\n");
@@ -71,10 +72,11 @@ int main(void) {
     printf("#### 4 - Excluir Bebida                 |\n");
     printf("#### 0 - Sair                           |\n");
     printf("----------------------------------------|\n");
-    printf("#### Selecione uma das opcoes: ");
+    printf("#### Selecione uma das opcoes: \n");
+}
 
-// Tela de Gerenciamento de Funcionarios
-    printf("========================================|\n");
+void telaGerenciaFuncionario(void){
+    printf("\n========================================|\n");
     printf("|           BURGUER RESTAURANT          |\n");
     printf("========================================|\n");
     printf("|---------------------------------------|\n");
@@ -86,10 +88,11 @@ int main(void) {
     printf("#### 4 - Excluir Funcionario            |\n");
     printf("#### 0 - Sair                           |\n");
     printf("----------------------------------------|\n");
-    printf("#### Selecione uma das opcoes: ");
+    printf("#### Selecione uma das opcoes: \n");
+}
 
-// Tela de Pedidos 
-    printf("========================================|\n");
+void telaGerenciaPedido(void){
+    printf("\n========================================|\n");
     printf("|           BURGUER RESTAURANT          |\n");
     printf("========================================|\n");
     printf("|---------------------------------------|\n");
@@ -99,10 +102,11 @@ int main(void) {
     printf("#### 2 - Pedidos Finalizados            |\n");
     printf("#### 0 - Sair                           |\n");
     printf("----------------------------------------|\n");
-    printf("#### Selecione uma das opcoes: ");
+    printf("#### Selecione uma das opcoes: \n");
+}
 
-// Tela de Relatorios
-    printf("========================================|\n");
+void telaRelatorio(void){
+    printf("\n========================================|\n");
     printf("|           BURGUER RESTAURANT          |\n");
     printf("========================================|\n");
     printf("|---------------------------------------|\n");
@@ -113,10 +117,11 @@ int main(void) {
     printf("#### 3 - Quantidades de Pedidos Por Mês |\n");
     printf("#### 0 - Sair                           |\n");
     printf("----------------------------------------|\n");
-    printf("#### Selecione uma das opcoes: ");
-    
-//Caso o login não tenha permissão de admin
-    printf("=========================================\n");
+    printf("#### Selecione uma das opcoes: \n");
+}
+
+void menuCliente(void){
+    printf("\n=========================================\n");
     printf("|           BURGUER RESTAURANT          |\n");
     printf("=========================================\n");
     printf("|---------------------------------------|\n");
@@ -128,10 +133,11 @@ int main(void) {
     printf("#### 4 - Meu Perfil                     |\n");
     printf("#### 0 - Sair                           |\n");
     printf("----------------------------------------|\n");
-    printf("#### Selecione uma das opcoes: ");
+    printf("#### Selecione uma das opcoes: \n");
+}
 
-//Cardápio
-    printf("=========================================\n");
+void telaMenuCardapio(void){
+    printf("\n=========================================\n");
     printf("|           BURGUER RESTAURANT          |\n");
     printf("=========================================\n");
     printf("|---------------------------------------|\n");
@@ -143,10 +149,11 @@ int main(void) {
     printf("#### 4 - Bebidas                        |\n");
     printf("#### 0 - Sair                           |\n");
     printf("----------------------------------------|\n");
-    printf("#### Selecione uma das opcoes: ");
+    printf("#### Selecione uma das opcoes: \n");
+}
 
-//Realizar Compra
-    printf("=========================================\n");
+void telaMenuCompra(void){
+    printf("\n=========================================\n");
     printf("|           BURGUER RESTAURANT          |\n");
     printf("=========================================\n");
     printf("|---------------------------------------|\n");
@@ -157,10 +164,11 @@ int main(void) {
     printf("#### 3 - Pagamento                      |\n");
     printf("#### 0 - Sair                           |\n");
     printf("----------------------------------------|\n");
-    printf("#### Selecione uma das opcoes: ");
+    printf("#### Selecione uma das opcoes: \n");
+}
 
-//Status da Compra
-    printf("=========================================\n");
+void telaStatusCompra(void){
+    printf("\n=========================================\n");
     printf("|           BURGUER RESTAURANT          |\n");
     printf("=========================================\n");
     printf("|---------------------------------------|\n");
@@ -169,10 +177,11 @@ int main(void) {
     printf("#### 1 - Verificar Status               |\n");
     printf("#### 0 - Sair                           |\n");
     printf("----------------------------------------|\n");
-    printf("#### Selecione uma das opcoes: ");
+    printf("#### Selecione uma das opcoes: \n");
+}
 
-//Perfil Cliente
-    printf("=========================================\n");
+void telaPerfilCliente(void){
+    printf("\n=========================================\n");
     printf("|           BURGUER RESTAURANT          |\n");
     printf("=========================================\n");
     printf("|---------------------------------------|\n");
@@ -184,5 +193,47 @@ int main(void) {
     printf("#### 4 - Apagar Conta                   |\n");
     printf("#### 5 - Sair                           |\n");
     printf("----------------------------------------|\n");
-    printf("#### Selecione uma das opcoes: ");
+    printf("#### Selecione uma das opcoes: \n");
+}
+
+int main(void) {
+
+//Pedido de Login
+    telaLogin();
+
+//Caso o login tenha permissão de admin
+    menuAdmin();
+
+// Tela De Gerenciamento de Produtos
+    telaGerenciaProduto();
+
+// Tela De Gerenciamento de Hambugueres
+    telaGerenciaHamburguer();
+
+// Tela de Gerenciamento Bebidas
+    telaGerenciaBebida();
+
+// Tela de Gerenciamento de Funcionarios
+    telaGerenciaFuncionario();
+
+// Tela de Pedidos 
+    telaGerenciaPedido();
+
+// Tela de Relatorios
+    telaRelatorio();
+    
+//Caso o login não tenha permissão de admin
+    menuCliente();
+
+//Cardápio
+    telaMenuCardapio();
+
+//Realizar Compra
+    telaMenuCompra();
+
+//Status da Compra
+    telaStatusCompra();
+
+//Perfil Cliente
+    telaPerfilCliente();
 }
