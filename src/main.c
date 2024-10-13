@@ -210,10 +210,10 @@ void telaPerfilCliente(void){
 int validarUsuario(Usuario usuarios[], int totalUsuarios, char email[], char senha[]) {
     for (int i = 0; i < totalUsuarios; i++) {
         if (strcmp(usuarios[i].email, email) == 0 && strcmp(usuarios[i].senha, senha) == 0) {
-            return i; // Retorna o índice do usuário encontrado
+            return i; 
         }
     }
-    return -1; // Retorna -1 se nenhum usuário foi encontrado
+    return -1;
 }
 
 void cadastrarUsuario(Usuario usuarios[], int *totalUsuarios) {
