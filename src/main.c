@@ -277,8 +277,47 @@ int main(void) {
                 if (usuarioIndex != -1) {
                     if (usuarios[usuarioIndex].admin) {
                         printf("Login bem-sucedido! Bem-vindo, Admin %s.\n", usuarios[usuarioIndex].nome);
-                        menuAdmin(); 
-                        scanf("%d", &opcao);
+                        bool respostaMenuAdmin = true;
+                        while (respostaMenuAdmin) {
+                            menuAdmin(); 
+                            scanf("%d", &opcao);
+                            switch (opcao) {
+                            case 1:
+                                telaGerenciaProduto();
+                                scanf("%d", &opcao);
+                                switch (opcao) {
+                                case 1:
+                                    telaGerenciaHamburguer();
+                                    scanf("%d", &opcao);
+                                    break;
+                                case 2:
+                                    telaGerenciaProduto();
+                                    break;
+                                default:
+                                    break;
+                                }
+                                break;
+                            case 2:
+                                telaGerenciaFuncionario();
+                                scanf("%d", &opcao);
+                                break;
+                            case 3:
+                                telaGerenciaPedido();
+                                scanf("%d", &opcao);
+                                break;
+
+                            case 4:
+                                telaRelatorio();
+                                scanf("%d", &opcao);
+                                break;
+                            case 0:
+                                respostaMenuAdmin = false;
+                                break;
+                            default:
+                                printf("Valor inválido. Tente novamente.\n");
+                                break;
+                            }
+                        }
                     } else {
                         printf("Login bem-sucedido! Bem-vindo, Cliente %s.\n", usuarios[usuarioIndex].nome);
                         bool resposta_menu_cliente = true;
