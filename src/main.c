@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include<stdbool.h>
 
 void telaLogin(void){
     printf("=========================================\n");
@@ -9,6 +10,7 @@ void telaLogin(void){
     printf("|---------------------------------------|\n");
     printf("#### 1 - Login                          |\n");
     printf("#### 2 - Não Possuo Cadastro            |\n");
+    printf("#### 0 - Sair                           |\n");
     printf("----------------------------------------|\n");
     printf("#### Selecione uma das opcoes: \n");
 }
@@ -198,42 +200,48 @@ void telaPerfilCliente(void){
 
 int main(void) {
 
-//Pedido de Login
-    telaLogin();
+    bool resposta = true;
+    int opcao;
+    char email, senha;
 
-//Caso o login tenha permissão de admin
-    menuAdmin();
+    while (resposta) {
+        telaLogin();
+        scanf(" %d", &opcao);
 
-// Tela De Gerenciamento de Produtos
-    telaGerenciaProduto();
 
-// Tela De Gerenciamento de Hambugueres
-    telaGerenciaHamburguer();
+        switch (opcao) {
+        case 0:
+            printf("Obrigado, até a proxima!!\n");
+            resposta = false;
+            break;
+        
+        case 1:
+            printf("Digite o email do Usuário:\n");
+            scanf(" %c", &email);
 
-// Tela de Gerenciamento Bebidas
-    telaGerenciaBebida();
+            printf("Digite a senha do Usuário:\n");
+            scanf(" %c", &senha);
 
-// Tela de Gerenciamento de Funcionarios
-    telaGerenciaFuncionario();
+            //função de validação de usuario
+            break;
 
-// Tela de Pedidos 
-    telaGerenciaPedido();
+        case 2:
+            //função de cadastro de usuario
 
-// Tela de Relatorios
-    telaRelatorio();
-    
-//Caso o login não tenha permissão de admin
-    menuCliente();
-
-//Cardápio
-    telaMenuCardapio();
-
-//Realizar Compra
-    telaMenuCompra();
-
-//Status da Compra
-    telaStatusCompra();
-
-//Perfil Cliente
-    telaPerfilCliente();
+            break;
+        
+        default:
+            printf("Valor invalido:");
+            break;
+        }    
+    }
 }
+
+typedef struct Usuario {
+    int id;
+    char nome[50];
+    char* email[50];
+    char* senha[50];
+    bool cliente;
+    struct Usuario* proximo;
+} Usuario;
