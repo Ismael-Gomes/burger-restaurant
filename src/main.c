@@ -272,21 +272,17 @@ int main(void) {
                 printf("Digite a senha do Usuário:\n");
                 scanf("%s", senha);
 
-                // Função de validação de usuário
                 int usuarioIndex = validarUsuario(usuarios, totalUsuarios, email, senha);
 
                 if (usuarioIndex != -1) {
-                    // Verifica se é admin ou cliente
                     if (usuarios[usuarioIndex].admin) {
                         printf("Login bem-sucedido! Bem-vindo, Admin %s.\n", usuarios[usuarioIndex].nome);
-                        menuAdmin(); // Redireciona para o menu de admin
+                        menuAdmin(); 
                         scanf("%d", &opcao);
-                        //estrutura do codigo todo
                     } else {
                         printf("Login bem-sucedido! Bem-vindo, Cliente %s.\n", usuarios[usuarioIndex].nome);
-                        menuCliente(); // Redireciona para o menu de cliente
+                        menuCliente();
                         scanf("%d", &opcao);
-                        //estrutura do codigo todo
                     }
                 } else {
                     printf("Email ou senha incorretos. Tente novamente.\n");
@@ -294,7 +290,6 @@ int main(void) {
                 break;
             case 2:
                 cadastrarUsuario(usuarios, &contador);
-                printf("Função de cadastro não implementada.\n");
                 break;
 
             default:
