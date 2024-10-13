@@ -7,7 +7,7 @@ typedef struct Usuario {
     char nome[50];
     char email[50];
     char senha[50];
-    bool cliente;
+    bool admin;
 } Usuario;
 
 void telaLogin(void){
@@ -207,7 +207,6 @@ void telaPerfilCliente(void){
     printf("#### Selecione uma das opcoes: \n");
 }
 
-// Função para validar usuário
 int validarUsuario(Usuario usuarios[], int totalUsuarios, char email[], char senha[]) {
     for (int i = 0; i < totalUsuarios; i++) {
         if (strcmp(usuarios[i].email, email) == 0 && strcmp(usuarios[i].senha, senha) == 0) {
@@ -217,10 +216,37 @@ int validarUsuario(Usuario usuarios[], int totalUsuarios, char email[], char sen
     return -1; // Retorna -1 se nenhum usuário foi encontrado
 }
 
+void cadastrarUsuario(Usuario usuarios[], int *totalUsuarios) {
+    if (*totalUsuarios >= 10) {
+        printf("Erro: Não há mais espaço para novos usuários.\n");
+        return;
+    }
+
+    Usuario novoUsuario;
+    novoUsuario.id = *totalUsuarios + 1; 
+
+    printf("Digite o nome do Usuário:\n");
+    scanf(" %[^\n]%*c", novoUsuario.nome);
+
+    printf("Digite o email do Usuário:\n");
+    scanf("%s", novoUsuario.email);
+
+    printf("Digite a senha do Usuário:\n");
+    scanf("%s", novoUsuario.senha);
+
+    novoUsuario.admin = false;
+
+    usuarios[*totalUsuarios] = novoUsuario;
+    (*totalUsuarios)++;
+
+    printf("Usuário cadastrado com sucesso!\n");
+}
+
 int main(void) {
     bool resposta = true;
-    int opcao;
+    int opcao, contador;
     char email[50], senha[50];
+
 
     Usuario usuarios[10] = {
         {1, "Ismael", "ismael@admin.com", "123456", true},
@@ -251,7 +277,7 @@ int main(void) {
 
                 if (usuarioIndex != -1) {
                     // Verifica se é admin ou cliente
-                    if (usuarios[usuarioIndex].cliente) {
+                    if (usuarios[usuarioIndex].admin) {
                         printf("Login bem-sucedido! Bem-vindo, Admin %s.\n", usuarios[usuarioIndex].nome);
                         menuAdmin(); // Redireciona para o menu de admin
                         scanf("%d", &opcao);
@@ -267,7 +293,7 @@ int main(void) {
                 }
                 break;
             case 2:
-                // Função de cadastro de usuário (a ser implementada)
+                cadastrarUsuario(usuarios, &contador);
                 printf("Função de cadastro não implementada.\n");
                 break;
 
