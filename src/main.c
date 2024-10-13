@@ -1,5 +1,14 @@
 #include <stdio.h>
-#include<stdbool.h>
+#include <stdbool.h>
+#include <string.h>
+
+typedef struct Usuario {
+    int id;
+    char nome[50];
+    char email[50];
+    char senha[50];
+    bool cliente;
+} Usuario;
 
 void telaLogin(void){
     printf("=========================================\n");
@@ -198,50 +207,64 @@ void telaPerfilCliente(void){
     printf("#### Selecione uma das opcoes: \n");
 }
 
-int main(void) {
+// Função para validar usuário
+bool validarUsuario(Usuario usuarios[], int totalUsuarios, char email[], char senha[]) {
+    for (int i = 0; i < totalUsuarios; i++) {
+        if (strcmp(usuarios[i].email, email) == 0 && strcmp(usuarios[i].senha, senha) == 0) {
+            return true; // E-mail e senha correspondem
+        }
+    }
+    return false; // Nenhuma correspondência encontrada
+}
 
+int main(void) {
     bool resposta = true;
     int opcao;
-    char email, senha;
+    char email[50], senha[50];
+
+    Usuario usuarios[10] = {
+        {1, "Ismael", "ismael@admin.com", "123456", true},
+        {2, "Kaique", "kaique@admin.com", "senha123", true},
+        {3, "Mopa", "mopa@admin.com", "abc123", false}
+    };
+    int totalUsuarios = 3;
 
     while (resposta) {
         telaLogin();
-        scanf(" %d", &opcao);
-
+        scanf("%d", &opcao);
 
         switch (opcao) {
-        case 0:
-            printf("Obrigado, até a proxima!!\n");
-            resposta = false;
-            break;
-        
-        case 1:
-            printf("Digite o email do Usuário:\n");
-            scanf(" %c", &email);
+            case 0:
+                printf("Obrigado, até a próxima!\n");
+                resposta = false;
+                break;
 
-            printf("Digite a senha do Usuário:\n");
-            scanf(" %c", &senha);
+            case 1:
+                printf("Digite o email do Usuário:\n");
+                scanf("%s", email);  // Usa-se %s para strings
 
-            //função de validação de usuario
-            break;
+                printf("Digite a senha do Usuário:\n");
+                scanf("%s", senha);  // Usa-se %s para strings
 
-        case 2:
-            //função de cadastro de usuario
+                // Função de validação de usuário
+                if (validarUsuario(usuarios, totalUsuarios, email, senha)) {
+                    printf("Login bem-sucedido! Bem-vindo.\n");
+                    // Aqui pode-se redirecionar o usuário para o menu adequado
+                } else {
+                    printf("Email ou senha incorretos. Tente novamente.\n");
+                }
+                break;
 
-            break;
-        
-        default:
-            printf("Valor invalido:");
-            break;
-        }    
+            case 2:
+                // Função de cadastro de usuário (a ser implementada)
+                printf("Função de cadastro não implementada.\n");
+                break;
+
+            default:
+                printf("Valor inválido. Tente novamente.\n");
+                break;
+        }
     }
-}
 
-typedef struct Usuario {
-    int id;
-    char nome[50];
-    char* email[50];
-    char* senha[50];
-    bool cliente;
-    struct Usuario* proximo;
-} Usuario;
+    return 0;
+}
