@@ -91,7 +91,7 @@ void telaGerenciaFuncionario(void){
     printf("|           BURGUER RESTAURANT          |\n");
     printf("========================================|\n");
     printf("|---------------------------------------|\n");
-    printf("|           GERENCIAR FUNCIONARIOS      |\n");
+    printf("|          GERENCIAR FUNCIONARIOS       |\n");
     printf("|---------------------------------------|\n");
     printf("#### 1 - Cadastrar Funcionarios         |\n");
     printf("#### 2 - Atualizar Funcionario          |\n");
@@ -202,7 +202,7 @@ void telaPerfilCliente(void){
     printf("#### 2 - Alterar Dados                  |\n");
     printf("#### 3 - Cadastrar Endereço             |\n");
     printf("#### 4 - Apagar Conta                   |\n");
-    printf("#### 5 - Sair                           |\n");
+    printf("#### 0 - Sair                           |\n");
     printf("----------------------------------------|\n");
     printf("#### Selecione uma das opcoes: \n");
 }
@@ -284,8 +284,110 @@ int main(void) {
                         //estrutura do codigo todo
                     } else {
                         printf("Login bem-sucedido! Bem-vindo, Cliente %s.\n", usuarios[usuarioIndex].nome);
-                        menuCliente(); // Redireciona para o menu de cliente
-                        scanf("%d", &opcao);
+                        bool resposta_menu_cliente = true;
+                        while (resposta_menu_cliente){
+                            menuCliente(); // Redireciona para o menu de cliente
+                            scanf("%d", &opcao);
+                            switch (opcao){
+                                case 1:
+                                    telaMenuCardapio();
+                                    scanf("%d", &opcao);
+                                    bool resposta_menu_cardapio = true;
+                                    while (resposta_menu_cardapio){
+                                        switch (opcao){
+                                            case 1:
+                                            //Artesanal
+                                                break;
+                                            case 2:
+                                            //Lanche
+                                                break;
+                                            case 3:
+                                            //Acompanhamento
+                                                break;
+                                            case 4:
+                                            //Bebida
+                                                break;
+                                            case 0:
+                                            resposta_menu_cardapio = false;
+                                                break;
+                                            default:
+                                                break;
+                                        }
+                                    }
+                                    break;
+                                case 2:
+                                    telaMenuCompra();
+                                    scanf("%d", &opcao);
+                                    bool resposta_menu_compra = true;
+                                    while (resposta_menu_compra){
+                                        switch (opcao){
+                                            case 1:
+                                            //Escolher Pedido
+                                                break;
+                                            case 2:
+                                            //Carrinho
+                                                break;
+                                            case 3:
+                                            //Pagamento
+                                                break;
+                                            case 0:
+                                            resposta_menu_compra = false;
+                                                break;
+                                            default:
+                                                break;
+                                        }
+                                    }
+                                    break;
+                                case 3:
+                                    telaStatusCompra();
+                                    scanf("%d", &opcao);
+                                    bool resposta_status_compra = true;
+                                    while (resposta_status_compra){
+                                        switch (opcao){
+                                            case 1:
+                                            //Verificar Status
+                                                break;
+                                            case 0:
+                                            resposta_status_compra = false;
+                                                break;
+                                            default:
+                                                break;
+                                        }
+                                    }
+                                    break;
+                                case 4:
+                                    telaPerfilCliente();
+                                    scanf("%d", &opcao);
+                                    bool resposta_perfil_cliente = true;
+                                    while (resposta_perfil_cliente){
+                                        switch (opcao){
+                                            case 1:
+                                            //Ver Dados
+                                                break;
+                                            case 2:
+                                            //Alterar Dados
+                                                break;
+                                            case 3:
+                                            //Cadastrar Endereço
+                                                break;
+                                            case 4:
+                                            //Apagar Conta
+                                                break;
+                                            case 0:
+                                            resposta_perfil_cliente = false;
+                                                break;
+                                            default:
+                                                break;
+                                        }
+                                    }
+                                    break;
+                                case 0:
+                                    resposta_menu_cliente = false;
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
                         //estrutura do codigo todo
                     }
                 } else {
