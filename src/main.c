@@ -208,13 +208,13 @@ void telaPerfilCliente(void){
 }
 
 // Função para validar usuário
-bool validarUsuario(Usuario usuarios[], int totalUsuarios, char email[], char senha[]) {
+int validarUsuario(Usuario usuarios[], int totalUsuarios, char email[], char senha[]) {
     for (int i = 0; i < totalUsuarios; i++) {
         if (strcmp(usuarios[i].email, email) == 0 && strcmp(usuarios[i].senha, senha) == 0) {
-            return true; // E-mail e senha correspondem
+            return i; // Retorna o índice do usuário encontrado
         }
     }
-    return false; // Nenhuma correspondência encontrada
+    return -1; // Retorna -1 se nenhum usuário foi encontrado
 }
 
 int main(void) {
@@ -241,20 +241,31 @@ int main(void) {
 
             case 1:
                 printf("Digite o email do Usuário:\n");
-                scanf("%s", email);  // Usa-se %s para strings
+                scanf("%s", email);
 
                 printf("Digite a senha do Usuário:\n");
-                scanf("%s", senha);  // Usa-se %s para strings
+                scanf("%s", senha);
 
                 // Função de validação de usuário
-                if (validarUsuario(usuarios, totalUsuarios, email, senha)) {
-                    printf("Login bem-sucedido! Bem-vindo.\n");
-                    // Aqui pode-se redirecionar o usuário para o menu adequado
+                int usuarioIndex = validarUsuario(usuarios, totalUsuarios, email, senha);
+
+                if (usuarioIndex != -1) {
+                    // Verifica se é admin ou cliente
+                    if (usuarios[usuarioIndex].cliente) {
+                        printf("Login bem-sucedido! Bem-vindo, Admin %s.\n", usuarios[usuarioIndex].nome);
+                        menuAdmin(); // Redireciona para o menu de admin
+                        scanf("%d", &opcao);
+                        //estrutura do codigo todo
+                    } else {
+                        printf("Login bem-sucedido! Bem-vindo, Cliente %s.\n", usuarios[usuarioIndex].nome);
+                        menuCliente(); // Redireciona para o menu de cliente
+                        scanf("%d", &opcao);
+                        //estrutura do codigo todo
+                    }
                 } else {
                     printf("Email ou senha incorretos. Tente novamente.\n");
                 }
                 break;
-
             case 2:
                 // Função de cadastro de usuário (a ser implementada)
                 printf("Função de cadastro não implementada.\n");
