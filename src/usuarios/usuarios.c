@@ -2,15 +2,6 @@
 #include <string.h>
 #include "usuarios.h"
 
-int validarUsuario(Usuario usuarios[], int totalUsuarios, char email[], char senha[]) {
-    for (int i = 0; i < totalUsuarios; i++) {
-        if (strcmp(usuarios[i].email, email) == 0 && strcmp(usuarios[i].senha, senha) == 0) {
-            return i; 
-        }
-    }
-    return -1;
-}
-
 void cadastrarUsuario(Usuario usuarios[], int *totalUsuarios) {
     if (*totalUsuarios >= 10) {
         printf("Erro: Não há mais espaço para novos usuários.\n");
@@ -30,7 +21,6 @@ void cadastrarUsuario(Usuario usuarios[], int *totalUsuarios) {
     scanf("%s", novoUsuario.senha);
 
     novoUsuario.admin = false;
-
     usuarios[*totalUsuarios] = novoUsuario;
     (*totalUsuarios)++;
 
