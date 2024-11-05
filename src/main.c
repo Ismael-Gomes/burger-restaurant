@@ -3,6 +3,7 @@
 #include <string.h>
 #include "./telas/telas.h"
 #include "./usuarios/usuarios.h"
+#include "./validacoes/validacoes.h"
 
 int main(void) {
     bool resposta = true;

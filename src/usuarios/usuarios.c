@@ -1,15 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "usuarios.h"
-
-int validarUsuario(Usuario usuarios[], int totalUsuarios, char email[], char senha[]) {
-    for (int i = 0; i < totalUsuarios; i++) {
-        if (strcmp(usuarios[i].email, email) == 0 && strcmp(usuarios[i].senha, senha) == 0) {
-            return i; 
-        }
-    }
-    return -1;
-}
+#include "validacoes.h"
 
 void cadastrarUsuario(Usuario usuarios[], int *totalUsuarios) {
     if (*totalUsuarios >= 10) {
@@ -22,15 +14,17 @@ void cadastrarUsuario(Usuario usuarios[], int *totalUsuarios) {
 
     printf("Digite o nome do Usuário:\n");
     scanf(" %[^\n]%*c", novoUsuario.nome);
+    if (!validarNome(novoUsuario.nome)) return;
 
     printf("Digite o email do Usuário:\n");
     scanf("%s", novoUsuario.email);
+    if (!validarEmail(novoUsuario.email)) return;
 
     printf("Digite a senha do Usuário:\n");
     scanf("%s", novoUsuario.senha);
+    if (!validarSenha(novoUsuario.senha)) return;
 
     novoUsuario.admin = false;
-
     usuarios[*totalUsuarios] = novoUsuario;
     (*totalUsuarios)++;
 
