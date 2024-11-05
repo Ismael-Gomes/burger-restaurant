@@ -4,11 +4,12 @@ TARGET = programa
 SRC_DIR = src
 TELAS_DIR = $(SRC_DIR)/telas
 USUARIOS_DIR = $(SRC_DIR)/usuarios
+VALIDACOES_DIR = $(SRC_DIR)/validacoes
 
 # Arquivos de código-fonte
 MAIN = $(SRC_DIR)/main.c
-SRC_FILES = $(TELAS_DIR)/telas.c $(USUARIOS_DIR)/usuarios.c
-INCLUDE_DIRS = -I $(TELAS_DIR) -I $(USUARIOS_DIR)
+SRC_FILES = $(TELAS_DIR)/telas.c $(USUARIOS_DIR)/usuarios.c $(USUARIOS_DIR)/validacoes.c
+INCLUDE_DIRS = -I $(TELAS_DIR) -I $(USUARIOS_DIR) -I $(VALIDACOES_DIR)
 
 # Compilador e flags
 CC = gcc
