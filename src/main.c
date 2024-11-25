@@ -31,9 +31,11 @@ int main(void) {
             case 1:
                 printf("Digite o email do Usuário:\n");
                 scanf("%s", email);
+                limparEspacos(email); 
 
                 printf("Digite a senha do Usuário:\n");
                 scanf("%s", senha);
+                limparEspacos(senha);
 
                 int usuarioIndex = validarUsuario(usuarios, totalUsuarios, email, senha);
 

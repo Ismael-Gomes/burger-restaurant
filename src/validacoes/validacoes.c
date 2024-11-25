@@ -5,7 +5,7 @@
 #include "validacoes.h"
 
 int validarUsuario(Usuario usuarios[], int totalUsuarios, char email[], char senha[]) {
-    // Limpar espaços antes de comparar
+    // Limpar espaços 
     limparEspacos(email);
     limparEspacos(senha);
 
