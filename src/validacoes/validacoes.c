@@ -5,13 +5,18 @@
 #include "validacoes.h"
 
 int validarUsuario(Usuario usuarios[], int totalUsuarios, char email[], char senha[]) {
+    // Limpar espaços antes de comparar
+    limparEspacos(email);
+    limparEspacos(senha);
+
     for (int i = 0; i < totalUsuarios; i++) {
         if (strcmp(usuarios[i].email, email) == 0 && strcmp(usuarios[i].senha, senha) == 0) {
-            return 1;
+            return 1;  // Usuário encontrado
         }
     }
-    return 0;
+    return 0;  // Usuário não encontrado
 }
+
 
 int validarNome(char nome[]) {
     if (strlen(nome) < 3) {
