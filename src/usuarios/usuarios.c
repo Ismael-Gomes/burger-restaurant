@@ -58,4 +58,7 @@ void cadastrarUsuario(Usuario usuarios[], int *totalUsuarios) {
     (*totalUsuarios)++;
 
     printf("Usuário cadastrado com sucesso!\n");
+
+    // Salva os usuários no arquivo após adicionar um novo
+    salvarUsuariosEmArquivo(usuarios, *totalUsuarios);
 }
