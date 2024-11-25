@@ -23,6 +23,7 @@ int validarNome(char nome[]) {
         printf("Erro: O nome deve ter pelo menos 3 caracteres.\n");
         return 0;
     }
+    limparEspacos(nome);  // Limpar espaços 
     return 1;
 }
 
