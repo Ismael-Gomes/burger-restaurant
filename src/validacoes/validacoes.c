@@ -37,6 +37,7 @@ int validarEmail(char email[]) {
 }
 
 int validarSenha(char senha[]) {
+    limparEspacos(senha);
     if (strlen(senha) < 6) {
         printf("Erro: A senha deve ter pelo menos 6 caracteres.\n");
         return 0;
