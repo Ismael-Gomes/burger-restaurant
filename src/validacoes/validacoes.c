@@ -34,5 +34,21 @@ int validarSenha(char senha[]) {
         printf("Erro: A senha deve ter pelo menos 6 caracteres.\n");
         return 0;
     }
+
+    int temNumero = 0, temMaiuscula = 0, temMinuscula = 0, temEspecial = 0;
+    
+    for (int i = 0; i < strlen(senha); i++) {
+        if (isdigit(senha[i])) temNumero = 1;
+        if (isupper(senha[i])) temMaiuscula = 1;
+        if (islower(senha[i])) temMinuscula = 1;
+        if (ispunct(senha[i])) temEspecial = 1;
+    }
+
+    if (!temNumero || !temMaiuscula || !temMinuscula || !temEspecial) {
+        printf("Erro: A senha deve conter pelo menos um número, uma letra maiúscula, uma letra minúscula e um símbolo.\n");
+        return 0;
+    }
+
     return 1;
 }
+
