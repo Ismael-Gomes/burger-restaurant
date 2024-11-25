@@ -28,6 +28,7 @@ int validarNome(char nome[]) {
 }
 
 int validarEmail(char email[]) {
+    limparEspacos(email);
     if (strstr(email, "@") == NULL || strstr(email, ".") == NULL) {
         printf("Erro: O email deve conter '@' e um domínio válido.\n");
         return 0;
