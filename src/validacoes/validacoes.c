@@ -64,19 +64,19 @@ void limparEspacos(char *str) {
     char *inicio = str;
     char *fim = str + strlen(str) - 1;
 
-    // Remover espaços da esquerda
+    
     while (isspace(*inicio)) {
         inicio++;
     }
 
-    // Remover espaços da direita
+    
     while (fim > inicio && isspace(*fim)) {
         fim--;
     }
 
     *(fim + 1) = '\0';
 
-    // Mover a string para a esquerda (caso haja espaços à esquerda)
+    
     if (inicio != str) {
         memmove(str, inicio, strlen(inicio) + 1);
     }
