@@ -21,3 +21,14 @@ void telaRelatorio() {
         case 2:
             relatorioFuncionarios();
             break;
+        case 3:
+            relatorioPedidos();
+            break;
+        case 0:
+            printf("Voltando ao menu anterior...\\n");
+            break;
+        default:
+            printf("Opção inválida. Tente novamente.\\n");
+            break;
+    }
+}
