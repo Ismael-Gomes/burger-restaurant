@@ -16,3 +16,8 @@ void telaRelatorio() {
  void gerarRelatorio(int opcao) {
     switch (opcao) {
         case 1:
+        relatorioProdutos();
+            break;
+        case 2:
+            relatorioFuncionarios();
+            break;
