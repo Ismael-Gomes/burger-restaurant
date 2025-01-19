@@ -32,3 +32,18 @@ void telaRelatorio() {
             break;
     }
 }
+void relatorioProdutos() {
+    printf("\\n=== Relatório de Produtos ===\\n");
+    // Implementar lógica para listar produtos
+}
+
+void relatorioFuncionarios() {
+    printf("\\n=== Relatório de Funcionários ===\\n");
+    // Implementar lógica para listar funcionários
+}
+
+void relatorioPedidos() {
+    printf("\\n=== Relatório de Pedidos ===\\n");
+    // Implementar lógica para listar pedidos
+}
+
