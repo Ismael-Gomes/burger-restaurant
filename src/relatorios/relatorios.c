@@ -13,3 +13,6 @@ void telaRelatorio() {
     printf("///           Escolha a opção desejada:                                   ///\\n");
     printf("\\n\\n");
 }
+ void gerarRelatorio(int opcao) {
+    switch (opcao) {
+        case 1:
