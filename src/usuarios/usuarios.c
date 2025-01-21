@@ -2,7 +2,7 @@
 #include <string.h>
 #include "usuarios.h"
 #include "validacoes.h"
-#define usuarios.dat"
+#define ARQUIVO_USUARIOS "usuarios.dat"
 
 void salvarUsuariosEmArquivo(Usuario usuarios[], int totalUsuarios) {
     FILE *arquivo = fopen(ARQUIVO_USUARIOS, "wb");
