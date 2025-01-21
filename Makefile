@@ -10,7 +10,7 @@ RELATORIOS_DIR = $(SRC_DIR)/relatorios
 # Arquivos de código-fonte
 MAIN = $(SRC_DIR)/main.c
 SRC_FILES = $(TELAS_DIR)/telas.c $(USUARIOS_DIR)/usuarios.c $(USUARIOS_DIR)/validacoes.c $(RELATORIOS_DIR)/relatorios.c
-INCLUDE_DIRS = -I $(TELAS_DIR) -I $(USUARIOS_DIR) -I $(VALIDACOES_DIR) -I$(RELATORIOS_DIR)
+INCLUDE_DIRS = -I $(TELAS_DIR) -I $(USUARIOS_DIR) -I $(VALIDACOES_DIR) -I $(RELATORIOS_DIR)
 
 # Compilador e flags
 CC = gcc
