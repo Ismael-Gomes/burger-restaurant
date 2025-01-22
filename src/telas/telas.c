@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include "telas.h"
 
-
 void telaLogin(void){
     printf("=========================================\n");
     printf("|               BEM VINDO!              |\n");

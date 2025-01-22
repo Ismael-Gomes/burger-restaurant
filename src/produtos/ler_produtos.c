@@ -10,27 +10,25 @@ void ler_id_codigo(int *id_codigo) {
         printf("Informe o código do produto (número inteiro): ");
         if (scanf("%d", id_codigo) != 1 || *id_codigo <= 0) {
             printf("Código inválido! Por favor, insira um número positivo.\n");
-            while (getchar() != '\n'); // Limpa o buffer de entrada
+            while (getchar() != '\n'); 
         } else {
             break;
         }
     } while (1);
-    getchar(); // Remove o '\n' residual do buffer
+    getchar();
 }
 
-// Função para ler o nome do produto
 void ler_nome_produto(char *nome, size_t tamanho) {
     do {
         printf("///            Nome: ");
         fgets(nome, tamanho, stdin);
         remove_newline(nome); 
-        if (!validarNome(nome)) { // Função de validação presumida em validacoes.h
+        if (!validarNome(nome)) { 
             printf("///            Nome do produto é inválido! Deve ter pelo menos 3 caracteres.\n");
         }
-    } while (!validarNome(nome)); // Repete até o nome ser válido
+    } while (!validarNome(nome)); 
 }
 
-// Função para ler a quantidade em estoque
 void ler_quantidade(int *quantidade) {
     char buffer[10];
     int valor_valido = 0;
@@ -46,24 +44,23 @@ void ler_quantidade(int *quantidade) {
     } while (!valor_valido);
 }
 
-// Função para ler o valor do produto
 void ler_valor_produto(char *valor, size_t tamanho) {
     double val;
     do {
         printf("///            Valor do produto (ex: 123.45): R$ ");
         fgets(valor, tamanho, stdin);
         remove_newline(valor);
-        // Tentar interpretar o valor
+
         if (sscanf(valor, "%lf", &val) != 1) {
             printf("///            Formato inválido! Certifique-se de inserir um valor numérico válido.\n");
             continue;
         }
-        // Verificar se o valor é positivo
+
         if (val < 0) {
             printf("///            Valor inválido! O valor deve ser maior ou igual a zero.\n");
             continue;
         }
-        // Tudo está válido
+
         break;
     } while (1);
 }

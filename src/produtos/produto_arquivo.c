@@ -60,13 +60,11 @@ void atualizar_produto_arquivo(int id_codigo) {
 
             printf("Novo preço (como número, será armazenado como string): ");
             fgets(produtos[i].valor, sizeof(produtos[i].valor), stdin);
-            produtos[i].valor[strcspn(produtos[i].valor, "\n")] = '\0';  // Remover o '\n'
+            produtos[i].valor[strcspn(produtos[i].valor, "\n")] = '\0'; 
 
-            // Se precisar realizar operações com o valor como número, converta para float
-            float valor = atof(produtos[i].valor);  // Convertendo string para float
+            float valor = atof(produtos[i].valor);  
             printf("Preço como float: %.2f\n", valor);
 
-            // Atualizar no arquivo
             FILE *arquivo = fopen(ARQUIVO_PRODUTOS, "wb");
             if (arquivo == NULL) {
                 perror("Erro ao abrir o arquivo para atualizar o produto");
@@ -125,7 +123,7 @@ void excluir_produto_arquivo(int id_codigo) {
 int obter_proximo_id_produto(void) {
     FILE *arquivo = fopen(ARQUIVO_PRODUTOS, "rb");
     if (arquivo == NULL) {
-        return 1; // Primeiro ID
+        return 1; 
     }
 
     Produto produto;

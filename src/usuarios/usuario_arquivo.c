@@ -5,7 +5,6 @@
 
 #define ARQUIVO_USUARIOS "usuarios.dat"
 
-// Função para salvar um usuário no arquivo
 void salvar_usuario_arquivo(const Usuario *usuario) {
     FILE *arquivo = fopen(ARQUIVO_USUARIOS, "ab");
     if (arquivo == NULL) {
@@ -16,7 +15,6 @@ void salvar_usuario_arquivo(const Usuario *usuario) {
     fclose(arquivo);
 }
 
-// Função para carregar usuários do arquivo
 void carregar_usuarios_arquivo(Usuario **usuarios, int *qtd_usuarios) {
     FILE *arquivo = fopen(ARQUIVO_USUARIOS, "rb");
     if (arquivo == NULL) {
@@ -72,10 +70,9 @@ void atualizar_usuario_arquivo(int id) {
             printf("O usuário é administrador? (1 - Sim, 0 - Não): ");
             int admin_input;
             scanf("%d", &admin_input);
-            getchar(); // Limpar buffer
+            getchar();
             usuarios[i].admin = (admin_input == 1);
 
-            // Salvar alterações no arquivo
             FILE *arquivo = fopen(ARQUIVO_USUARIOS, "wb");
             if (arquivo == NULL) {
                 perror("Erro ao abrir o arquivo para atualizar o usuário");
@@ -95,7 +92,6 @@ void atualizar_usuario_arquivo(int id) {
     free(usuarios);
 }
 
-// Função para excluir um usuário do arquivo
 void excluir_usuario_arquivo(int id) {
     Usuario *usuarios = NULL;
     int qtd_usuarios = 0;
@@ -133,11 +129,10 @@ void excluir_usuario_arquivo(int id) {
     }
 }
 
-// Função para obter o próximo ID de usuário
 int obter_proximo_id_usuario(void) {
     FILE *arquivo = fopen(ARQUIVO_USUARIOS, "rb");
     if (arquivo == NULL) {
-        return 1; // Primeiro ID
+        return 1; 
     }
 
     Usuario usuario;
@@ -153,7 +148,6 @@ int obter_proximo_id_usuario(void) {
     return maior_id + 1;
 }
 
-// Função para buscar um usuário no arquivo por ID
 Usuario* buscar_usuario_arquivo(int id) {
     FILE *arquivo = fopen(ARQUIVO_USUARIOS, "rb");
     if (arquivo == NULL) {

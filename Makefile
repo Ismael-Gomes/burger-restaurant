@@ -1,3 +1,4 @@
+# Nome do programa
 TARGET = programa
 
 # Diretórios
@@ -11,6 +12,8 @@ PRODUTOS_DIR = $(SRC_DIR)/produtos
 # Arquivos de código-fonte
 MAIN = $(SRC_DIR)/main.c
 SRC_FILES = $(RELATORIOS_DIR)/relatorios.c \
+            $(RELATORIOS_DIR)/relatorio_usuarios.c \
+            $(RELATORIOS_DIR)/relatorio_produtos.c \
             $(TELAS_DIR)/telas.c \
             $(USUARIOS_DIR)/usuarios.c \
             $(USUARIOS_DIR)/ler_usuarios.c \

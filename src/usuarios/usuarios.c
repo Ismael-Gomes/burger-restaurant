@@ -58,12 +58,11 @@ void cadastrar_usuario(void) {
     ler_email_usuario(usuario.email, sizeof(usuario.email));
     ler_senha_usuario(usuario.senha, sizeof(usuario.senha));
 
-    // Corrigido o uso do _Bool
     int admin_input;
     printf("O usuário será administrador? (1 - Sim, 0 - Não): ");
     scanf("%d", &admin_input);
     getchar();
-    usuario.admin = (admin_input != 0); // Converte para _Bool
+    usuario.admin = (admin_input != 0);
 
     usuario.id = obter_proximo_id_usuario();
     salvar_usuario_arquivo(&usuario);

@@ -2,9 +2,8 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include "../usuarios/usuarios.h"
-#include "./relatorios/relatorio.h"
+#include "./relatorios/relatorios.h"
 #include "./produtos/produtos.h"
-
 
 char exibir_menu(void);
 void tela_sobre(void);
@@ -19,6 +18,8 @@ int main(void) {
             case '1':   menu_usuario();
                         break;
             case '2':   menu_produto();
+                        break;
+            case '3':   menu_relatorios();
                         break;
         } 	
     } while (escolha != '0');
@@ -36,11 +37,10 @@ char exibir_menu(void) {
         printf("\n");
         printf("///////////////////////////////////////////////////////////////////////////////\n");
         printf("///   Escolha um módulo:                                                    ///\n");
-        printf("///   1. Login                                                              ///\n");
+        printf("///   1. Usuario                                                            ///\n");
         printf("///   2. Produtos                                                           ///\n");
-        printf("///   3. Orçamento                                                          ///\n");
-        printf("///   4. Relatorios                                                         ///\n");
-        printf("///   5. Equipe                                                             ///\n");
+        printf("///   3. Relatorios                                                         ///\n");
+        printf("///   4. Equipe                                                             ///\n");
         printf("///   0. Sair                                                               ///\n");
         printf("///////////////////////////////////////////////////////////////////////////////\n");
         printf("#### Selecione uma das opções: \n");
