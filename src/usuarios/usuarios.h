@@ -11,9 +11,14 @@ typedef struct {
     bool admin;
 } Usuario;
 
-int validarUsuario(Usuario usuarios[], int totalUsuarios, char email[], char senha[]);
-void cadastrarUsuario(Usuario usuarios[], int *totalUsuarios);
-void salvarUsuarios(Usuario usuarios[], int totalUsuarios);
-int carregarUsuarios(Usuario usuarios[]);
+void menu_usuario(void);
+
+void cadastrar_usuario(void);
+
+void pesquisar_usuario(void);
+
+void atualizar_usuario(void);
+
+void excluir_usuario(void);
 
 #endif

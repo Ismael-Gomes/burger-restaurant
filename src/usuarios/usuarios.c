@@ -1,64 +1,135 @@
 #include <stdio.h>
-#include <string.h>
+#include <stdlib.h>
+#include <ctype.h> 
 #include "usuarios.h"
-#include "validacoes.h"
-#define ARQUIVO_USUARIOS "usuarios.dat"
+#include "ler_usuario.h"
+#include "usuario_arquivo.h"
 
-void salvarUsuariosEmArquivo(Usuario usuarios[], int totalUsuarios) {
-    FILE *arquivo = fopen(ARQUIVO_USUARIOS, "wb");
-    if (arquivo == NULL) {
-        printf("Erro ao abrir o arquivo para salvar os usuários.\n");
-        return;
-    }
+void menu_usuario() {
+    int escolha;
+    do {
+        system("clear||cls");
+        printf("\n");
+        printf("/////////////////////////////////////////////////////////////////////////////\n");
+        printf("///            = = = = = = = = = Menu Usuários = = = = = = = = =           ///\n");
+        printf("///                                                                       ///\n");
+        printf("///            1. Cadastrar um Usuário                                    ///\n");
+        printf("///            2. Pesquisar Usuários                                      ///\n");
+        printf("///            3. Atualizar Usuário                                       ///\n");
+        printf("///            4. Excluir um Usuário                                      ///\n");
+        printf("///            0. Voltar ao menu anterior                                 ///\n");
+        printf("///                                                                       ///\n");
+        printf("///            Escolha a opção desejada: ");
+        scanf("%d", &escolha);
+        getchar();
 
-    fwrite(&totalUsuarios, sizeof(int), 1, arquivo); // Salva o total de usuários
-    fwrite(usuarios, sizeof(Usuario), totalUsuarios, arquivo); // Salva os dados dos usuários
-
-    fclose(arquivo);
-    printf("Usuários salvos com sucesso!\n");
+        switch (escolha) {
+            case 1:
+                cadastrar_usuario();
+                break;
+            case 2:
+                pesquisar_usuario();
+                break;
+            case 3:
+                atualizar_usuario();
+                break;
+            case 4:
+                excluir_usuario();
+                break;
+            case 0:
+                break;
+            default:
+                printf("Opção inválida! Tente novamente.\n");
+                printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+                getchar();
+                break;
+        }
+    } while (escolha != 0);
 }
 
-int carregarUsuariosDeArquivo(Usuario usuarios[]) {
-    FILE *arquivo = fopen(ARQUIVO_USUARIOS, "rb");
-    if (arquivo == NULL) {
-        printf("Nenhum arquivo encontrado. Iniciando com dados padrão.\n");
-        return 0;  
-    }
+void cadastrar_usuario(void) {
+    Usuario usuario;
+    printf("\n///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///            = = = = = Cadastrar Novo Usuário = = = = = = = = = =          ///\n");
+    printf("///                                                                           ///\n");
+    printf("/// Informe os dados do usuário:                                              ///\n");
 
-    int totalUsuarios;
-    fread(&totalUsuarios, sizeof(int), 1, arquivo); // Lê o total de usuários
-    fread(usuarios, sizeof(Usuario), totalUsuarios, arquivo); // Lê os dados dos usuários
+    ler_nome_usuario(usuario.nome, sizeof(usuario.nome));
+    ler_email_usuario(usuario.email, sizeof(usuario.email));
+    ler_senha_usuario(usuario.senha, sizeof(usuario.senha));
 
-    fclose(arquivo);
-    return totalUsuarios;  // MOStra o total de usuários
+    // Corrigido o uso do _Bool
+    int admin_input;
+    printf("O usuário será administrador? (1 - Sim, 0 - Não): ");
+    scanf("%d", &admin_input);
+    getchar();
+    usuario.admin = (admin_input != 0); // Converte para _Bool
+
+    usuario.id = obter_proximo_id_usuario();
+    salvar_usuario_arquivo(&usuario);
+
+    printf("/////////////////////////////////////////////////////////////////////////////////\n");
+    printf("///            Usuário cadastrado com sucesso!                                ///\n");
+    printf("///            ID: %d\n", usuario.id);
+    printf("///            Nome: %s\n", usuario.nome);
+    printf("///            Email: %s\n", usuario.email);
+    printf("///            Administrador: %s\n", usuario.admin ? "Sim" : "Não");
+    printf("/////////////////////////////////////////////////////////////////////////////////\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
 }
-void cadastrarUsuario(Usuario usuarios[], int *totalUsuarios) {
-    if (*totalUsuarios >= 10) {
-        printf("Erro: Não há mais espaço para novos usuários.\n");
-        return;
+
+void pesquisar_usuario(void) {
+    int id;
+    printf("\n///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///            = = = = = Pesquisar Usuário = = = = = = = = = = = =            ///\n");
+    printf("///                                                                           ///\n");
+    printf("/// Informe o ID do usuário para pesquisa: ");
+    ler_id_usuario(&id);
+
+    Usuario *usuario = buscar_usuario_arquivo(id);
+
+    if (usuario != NULL) {
+        printf("/////////////////////////////////////////////////////////////////////////////\n");
+        printf("///            Usuário encontrado:                                        ///\n");
+        printf("///            ID: %d\n", usuario->id);
+        printf("///            Nome: %s\n", usuario->nome);
+        printf("///            Email: %s\n", usuario->email);
+        printf("///            Administrador: %s\n", usuario->admin ? "Sim" : "Não");
+        printf("/////////////////////////////////////////////////////////////////////////////\n");
+        free(usuario);
+    } else {
+        printf("/////////////////////////////////////////////////////////////////////////////\n");
+        printf("///            Usuário não encontrado!                                    ///\n");
+        printf("/////////////////////////////////////////////////////////////////////////////\n");
     }
+    printf("/////////////////////////////////////////////////////////////////////////////////\n");
+    printf("\n\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
+}
 
-    Usuario novoUsuario;
-    novoUsuario.id = *totalUsuarios + 1;
+void atualizar_usuario(void) {
+    int id;
+    printf("\n///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///              = = = = = Atualizar Usuário = = = = = = = = = = = =          ///\n");
+    printf("///                                                                           ///\n");
+    printf("/// Informe o ID do usuário que deseja atualizar: ");
+    ler_id_usuario(&id);
+    atualizar_usuario_arquivo(id);
+    printf("/////////////////////////////////////////////////////////////////////////////////\n");
+    printf("\n\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
+}
 
-    printf("Digite o nome do Usuário:\n");
-    scanf(" %[^\n]%*c", novoUsuario.nome);
-    if (!validarNome(novoUsuario.nome)) return;
-
-    printf("Digite o email do Usuário:\n");
-    scanf("%s", novoUsuario.email);
-    if (!validarEmail(novoUsuario.email)) return;
-
-    printf("Digite a senha do Usuário:\n");
-    scanf("%s", novoUsuario.senha);
-    if (!validarSenha(novoUsuario.senha)) return;
-
-    novoUsuario.admin = false;
-    usuarios[*totalUsuarios] = novoUsuario;
-    (*totalUsuarios)++;
-
-    printf("Usuário cadastrado com sucesso!\n");
-
-    // Salva os usuários no arquivo após adicionar um novo
-    salvarUsuariosEmArquivo(usuarios, *totalUsuarios);
+void excluir_usuario(void) {
+    int id;
+    printf("\n///////////////////////////////////////////////////////////////////////////////\n");
+    printf("///              = = = = = Excluir Usuário = = = = = = = = = = = =            ///\n");
+    printf("///                                                                           ///\n");
+    printf("/// Informe o ID do usuário que deseja excluir: ");
+    ler_id_usuario(&id);
+    excluir_usuario_arquivo(id);
+    printf("/////////////////////////////////////////////////////////////////////////////////\n");
+    printf("\n\t\t\t>>> Tecle <ENTER> para continuar...\n");
+    getchar();
 }

@@ -17,4 +17,6 @@ int validarSenha(char senha[]);
 
 void limparEspacos(char *str);
 
+void remove_newline(char *str);
+
 #endif

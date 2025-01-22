@@ -3,9 +3,10 @@
 #include "produtos.h"
 #include "ler_produtos.h"
 #include "produto_arquivo.h"
-void menu_produto(){
+
+void menu_produto() {
     int escolha;
-    do{   
+    do {   
         system("clear||cls");
         printf("\n");
         printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -20,33 +21,34 @@ void menu_produto(){
         printf("///            Escolha a opção desejada: ");
         scanf("%d", &escolha);
         getchar();
-        switch (escolha)
-        {
-        case 1:
-            cadastrar_produto();
-            break;
-        case 2:
-            pesquisar_produto();
-            break;
-        case 3:
-            atualizar_produto();
-            break;
-        case 4:
-            excluir_produto();
-            break;
-         case 0:
-        
-            break;
-        default:
-            printf("Opção inválida! Tente novamente.\n");
-            printf("\t\t\t>Opção inválida! Tente novamente.\n");
-            printf("///                                                                   ///\n");
-            printf("/////////////////////////////////////////////////////////////////////////\n");
-            printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
-            break;
+
+        switch (escolha) {
+            case 1:
+                cadastrar_produto();
+                break;
+            case 2:
+                pesquisar_produto();
+                break;
+            case 3:
+                atualizar_produto();
+                break;
+            case 4:
+                excluir_produto();
+                break;
+            case 0:
+                break;
+            default:
+                printf("Opção inválida! Tente novamente.\n");
+                printf("\t\t\t>Opção inválida! Tente novamente.\n");
+                printf("///                                                                   ///\n");
+                printf("/////////////////////////////////////////////////////////////////////////\n");
+                printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+                getchar();
+                break;
         }
     } while (escolha != 0);
 }
+
 void cadastrar_produto(void) {
     Produto produto;
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
@@ -68,6 +70,7 @@ void cadastrar_produto(void) {
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
     getchar();
 }
+
 void pesquisar_produto(void) {
     int id_codigo;
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
@@ -76,6 +79,7 @@ void pesquisar_produto(void) {
     printf("/// Informe o Código do produto para pesquisa: ");
     ler_id_codigo(&id_codigo);
     Produto *produto = buscar_produto_arquivo(id_codigo);
+
     if (produto != NULL) {
         printf("/////////////////////////////////////////////////////////////////////////////\n");
         printf("///            Produto encontrado:                                        ///\n");
@@ -84,6 +88,7 @@ void pesquisar_produto(void) {
         printf("///            Estoque: %d\n", produto->quantidade_estoque);
         printf("///            Valor: %s\n", produto->valor);
         printf("/////////////////////////////////////////////////////////////////////////////\n");
+        free(produto);
     } else {
         printf("/////////////////////////////////////////////////////////////////////////////\n");
         printf("///            Produto não encontrado!                                    ///\n");
@@ -93,6 +98,7 @@ void pesquisar_produto(void) {
     printf("\n\t\t\t>>> Tecle <ENTER> para continuar...\n");
     getchar();
 }
+
 void atualizar_produto(void) {
     int id_codigo;
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");
@@ -105,6 +111,7 @@ void atualizar_produto(void) {
     printf("\n\t\t\t>>> Tecle <ENTER> para continuar...\n");
     getchar();
 }
+
 void excluir_produto(void) {
     int id_codigo;
     printf("\n///////////////////////////////////////////////////////////////////////////////\n");

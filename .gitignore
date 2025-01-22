@@ -43,6 +43,7 @@
 *.su
 *.idb
 *.pdb
+*.dat
 
 # Kernel Module Compile Results
 *.mod*
@@ -54,3 +55,4 @@ Mkfile.old
 dkms.conf
 src/build/Debug/
 src/main
+programa
