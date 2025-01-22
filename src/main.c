@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <string.h>
-include "../telas/telas.h"
+#include "../telas/telas.h"
 #include "../usuarios/usuarios.h"
 #include "../validacoes/validacoes.h"
-#include "../relatorios/relatorio.h"
+#include "../relatorios/relatorios.h"
 
 int main(void) {
     bool resposta = true;
