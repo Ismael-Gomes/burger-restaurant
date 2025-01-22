@@ -108,19 +108,17 @@ void telaGerenciaPedido(void){
     printf("#### Selecione uma das opcoes: \n");
 }
 
-void telaRelatorio(void){
-    printf("\n========================================|\n");
-    printf("|           BURGUER RESTAURANT          |\n");
-    printf("========================================|\n");
-    printf("|---------------------------------------|\n");
-    printf("|               RELATÓRIOS              |\n");
-    printf("|---------------------------------------|\n");
-    printf("#### 1 - Pedidos do Dia                 |\n");
-    printf("#### 2 - Quantidades de Pedidos do Dia  |\n");
-    printf("#### 3 - Quantidades de Pedidos Por Mês |\n");
-    printf("#### 0 - Sair                           |\n");
-    printf("----------------------------------------|\n");
-    printf("#### Selecione uma das opcoes: \n");
+void telaRelatorio() {
+    printf("\\n\\n");
+    printf("///           = = = = = = = = = Relatórios = = = = = = = = =             ///\\n");
+    printf("///                                                                       ///\\n");
+    printf("///           1. Relatório de Produtos                                    ///\\n");
+    printf("///           2. Relatório de Funcionários                                ///\\n");
+    printf("///           3. Relatório de Pedidos                                     ///\\n");
+    printf("///           0. Voltar                                                   ///\\n");
+    printf("///                                                                       ///\\n");
+    printf("///           Escolha a opção desejada:                                   ///\\n");
+    printf("\\n\\n");
 }
 
 void menuCliente(void){
