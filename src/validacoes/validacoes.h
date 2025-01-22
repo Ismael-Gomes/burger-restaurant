@@ -1,7 +1,7 @@
 #ifndef VALIDACOES_H
 #define VALIDACOES_H
 
-#include "usuarios.h"
+#include "../usuarios/usuarios.h"
 
 // Validação para autenticar um usuário pelo email e senha
 int validarUsuario(Usuario usuarios[], int totalUsuarios, char email[], char senha[]);
@@ -14,5 +14,7 @@ int validarEmail(char email[]);
 
 // Validação para a senha do usuário
 int validarSenha(char senha[]);
+
+void limparEspacos(char *str);
 
 #endif
