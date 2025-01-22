@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
-#include "usuarios.h"
+#include "../usuarios/usuarios.h"
 #include "validacoes.h"
 
 int validarUsuario(Usuario usuarios[], int totalUsuarios, char email[], char senha[]) {
@@ -38,6 +38,7 @@ int validarEmail(char email[]) {
 
 int validarSenha(char senha[]) {
     limparEspacos(senha);
+    
     if (strlen(senha) < 6) {
         printf("Erro: A senha deve ter pelo menos 6 caracteres.\n");
         return 0;
@@ -45,7 +46,7 @@ int validarSenha(char senha[]) {
 
     int temNumero = 0, temMaiuscula = 0, temMinuscula = 0, temEspecial = 0;
     
-    for (int i = 0; i < strlen(senha); i++) {
+    for (size_t i = 0; i < strlen(senha); i++) {
         if (isdigit(senha[i])) temNumero = 1;
         if (isupper(senha[i])) temMaiuscula = 1;
         if (islower(senha[i])) temMinuscula = 1;
