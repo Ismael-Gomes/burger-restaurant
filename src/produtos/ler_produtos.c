@@ -33,7 +33,7 @@ void ler_quantidade(int *quantidade) {
     char buffer[10];
     int valor_valido = 0;
     do {
-        printf("///            Quantidade em estoque (número inteiro): ");
+        printf("///            Quantidade do produto (número inteiro): ");
         fgets(buffer, sizeof(buffer), stdin);
         remove_newline(buffer);
         if (sscanf(buffer, "%d", quantidade) != 1 || *quantidade < 0) {

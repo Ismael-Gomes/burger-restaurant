@@ -4,7 +4,7 @@
 typedef struct {
     int id_codigo;
     char nome[50];
-    int quantidade_estoque;
+    int quantidade_produto;
     char valor[10];
 } Produto;
 

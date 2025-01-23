@@ -30,7 +30,7 @@ double listarRelatoriosProdutos() {
     while (fread(&entrada, sizeof(Produto), 1, arquivo) > 0) {
         printf("ID: %d\n", entrada.id_codigo);
         printf("Nome: %s\n", entrada.nome);
-        printf("Quantidade em Estoque: %d\n", entrada.quantidade_estoque);
+        printf("Quantidade produto: %d\n", entrada.quantidade_produto);
         printf("Valor: R$ %s\n", entrada.valor);
 
         total += atof(entrada.valor);
@@ -133,7 +133,7 @@ void filtrar_produto_por_nome(const char *nomeFiltro) {
             encontrado = 1;
             printf("ID: %d\n", entrada.id_codigo);
             printf("Nome: %s\n", entrada.nome);
-            printf("Quantidade em Estoque: %d\n", entrada.quantidade_estoque);
+            printf("Quantidade produto: %d\n", entrada.quantidade_produto);
             printf("Valor: R$ %s\n", entrada.valor);
             printf("-------------------------\n");
         }
@@ -164,7 +164,7 @@ void filtrar_produto_por_valor(const char *valorFiltro) {
             encontrado = 1;
             printf("ID: %d\n", entrada.id_codigo);
             printf("Nome: %s\n", entrada.nome);
-            printf("Quantidade em Estoque: %d\n", entrada.quantidade_estoque);
+            printf("Quantidade produto: %d\n", entrada.quantidade_produto);
             printf("Valor: R$ %s\n", entrada.valor);
             printf("-------------------------\n");
         }
@@ -192,11 +192,11 @@ void filtrar_produto_por_quantidade(const char *quantidadeFiltro) {
     printf("-------------------------\n");
 
     while (fread(&entrada, sizeof(Produto), 1, arquivo)) {
-        if (entrada.quantidade_estoque >= quantidadeMinima) {
+        if (entrada.quantidade_produto >= quantidadeMinima) {
             encontrado = 1;
             printf("ID: %d\n", entrada.id_codigo);
             printf("Nome: %s\n", entrada.nome);
-            printf("Quantidade em Estoque: %d\n", entrada.quantidade_estoque);
+            printf("Quantidade em Estoque: %d\n", entrada.quantidade_produto);
             printf("Valor: R$ %s\n", entrada.valor);
             printf("-------------------------\n");
         }

@@ -56,7 +56,7 @@ void cadastrar_produto(void) {
     printf("///                                                                           ///\n");
     printf("/// Informe os dados do produto:                                              ///\n");
     ler_nome_produto(produto.nome, sizeof(produto.nome));
-    ler_quantidade(&produto.quantidade_estoque);
+    ler_quantidade(&produto.quantidade_produto);
     ler_valor_produto(produto.valor, sizeof(produto.valor));
     produto.id_codigo = obter_proximo_id_produto();
     salvar_produto_arquivo(&produto);
@@ -64,7 +64,7 @@ void cadastrar_produto(void) {
     printf("///            Produto cadastrado com sucesso!                                ///\n");
     printf("///            Código: %d\n", produto.id_codigo);
     printf("///            Nome: %s\n", produto.nome);
-    printf("///            Estoque: %d\n", produto.quantidade_estoque);
+    printf("///            Quantidade: %d\n", produto.quantidade_produto);
     printf("///            Valor: %s\n", produto.valor);
     printf("/////////////////////////////////////////////////////////////////////////////////\n");
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
@@ -85,7 +85,7 @@ void pesquisar_produto(void) {
         printf("///            Produto encontrado:                                        ///\n");
         printf("///            Código: %d\n", produto->id_codigo);
         printf("///            Nome: %s\n", produto->nome);
-        printf("///            Estoque: %d\n", produto->quantidade_estoque);
+        printf("///            Quantidade: %d\n", produto->quantidade_produto);
         printf("///            Valor: %s\n", produto->valor);
         printf("/////////////////////////////////////////////////////////////////////////////\n");
         free(produto);
